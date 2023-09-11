@@ -1,6 +1,7 @@
 package com.example.dazzlingdecor.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,8 +9,9 @@ import com.bumptech.glide.Glide
 import com.example.dazzlingdecor.ItemCliickListner
 import com.example.dazzlingdecor.databinding.RowWallpaperCategoryRecViewBinding
 import com.example.dazzlingdecor.model.PhotosModel
+import com.example.dazzlingdecor.screens.FullScreenWallpaperActivity
 
-class RecyclerViewCategoriesWallpaper(val context:Context,val wallList:ArrayList<PhotosModel>):RecyclerView.Adapter<RecyclerViewCategoriesWallpaper.ViewHolder>() {
+class RecyclerViewSearchedWallpaperAdapter(val context:Context, val wallList:ArrayList<PhotosModel>):RecyclerView.Adapter<RecyclerViewSearchedWallpaperAdapter.ViewHolder>() {
    var listner:ItemCliickListner?=null
     fun setOnItemClick(listner: ItemCliickListner){
         this.listner=listner
@@ -28,6 +30,9 @@ class RecyclerViewCategoriesWallpaper(val context:Context,val wallList:ArrayList
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.imgView.setOnClickListener {
             listner?.OnItemClickListener(position)
+        }
+        holder.binding.imgView.setOnClickListener {
+            context.startActivity(Intent(context,FullScreenWallpaperActivity::class.java).putExtra("image",wallList[position].src.portrait))
         }
 Glide.with(context).load(wallList[position].src.portrait).into(holder.binding.imgView)
     }

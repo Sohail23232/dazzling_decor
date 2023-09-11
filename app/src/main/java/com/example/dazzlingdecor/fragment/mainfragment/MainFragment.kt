@@ -2,28 +2,23 @@ package com.example.dazzlingdecor.fragment.mainfragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView.OnItemClickListener
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.dazzlingdecor.ItemCliickListner
-import com.example.dazzlingdecor.adapter.RecyclerViewColorAdapter
+import com.example.dazzlingdecor.adapter.RecyclerViewColorPalleteAdapter
 import com.example.dazzlingdecor.databinding.FragmentMainBinding
-import com.example.dazzlingdecor.fragment.mainfragment.viewmodel.MainActivityViewModel
+import com.example.dazzlingdecor.fragment.mainfragment.viewmodel.MainFragmentViewModel
 import com.example.dazzlingdecor.screens.mainactivity.MainActivity
-import com.example.dazzlingdecor.screens.wallpapercategory.WallpaperCategoryActivity
-import com.facebook.shimmer.Shimmer
-import com.facebook.shimmer.ShimmerFrameLayout
+import com.example.dazzlingdecor.screens.wallpapersearched.WallpaperSearchedActivity
 
 
 class MainFragment : Fragment()/*,ItemCliickListner */{
 lateinit var binding:FragmentMainBinding
-lateinit var viewModel: MainActivityViewModel
+lateinit var viewModel: MainFragmentViewModel
 var colorPos=0
 /*
     override fun OnItemClickListener(position: Int) {
@@ -37,16 +32,10 @@ var colorPos=0
         binding=FragmentMainBinding.inflate(inflater,container,false)
 
 
-    val shimmer=Shimmer.AlphaHighlightBuilder()
-        .setDuration(1500)
-        .setDirection(Shimmer.Direction.LEFT_TO_RIGHT)
-        .build()
-    binding.shimmer.setShimmer(shimmer)
-    binding.shimmer.startShimmer()
-viewModel=ViewModelProvider(this)[MainActivityViewModel::class.java]
-viewModel.getCuratedImages(binding.recViewCurated,this.requireContext(),binding.shimmer)
+viewModel=ViewModelProvider(this)[MainFragmentViewModel::class.java]
+viewModel.getCuratedImages(binding.recViewBestOfMonth,this.requireContext())
 binding.recViewColor.layoutManager=LinearLayoutManager(this.requireContext(),LinearLayoutManager.HORIZONTAL,false)
-val adapter=RecyclerViewColorAdapter(this.requireContext(),MainActivity.colorList,object :RecyclerViewColorAdapter.OnItemSelectedList{
+val adapter=RecyclerViewColorPalleteAdapter(this.requireContext(),MainActivity.colorList,object :RecyclerViewColorPalleteAdapter.OnItemSelectedList{
     override fun onItemClick(position: Int) {
         colorPos=position
         Toast.makeText(requireContext(), "$position", Toast.LENGTH_SHORT).show()
@@ -58,7 +47,7 @@ val adapter=RecyclerViewColorAdapter(this.requireContext(),MainActivity.colorLis
         binding.btnSearchWallpaper.setOnClickListener{
             val searchValue=binding.edtSearchWallpaper.text.toString()
             if (searchValue!=""){
-            startActivity(Intent(this.requireContext(),WallpaperCategoryActivity::class.java)
+            startActivity(Intent(this.requireContext(),WallpaperSearchedActivity::class.java)
                 .putExtra("search",searchValue)
                 .putExtra("colorCode",MainActivity.colorList[colorPos].color))
         }else{

@@ -1,31 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E6E8F1"
-    android:fillViewport="true"
     android:orientation="vertical"
     tools:context=".screens.mainactivity.MainActivity">
-
     <FrameLayout
+        android:id="@+id/container"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavBar"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </FrameLayout>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
         android:id="@+id/bottomNavBar"
+        android:layout_width="0dp"
+        android:baselineAligned="true"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginBottom="@dimen/_15sdp"
+        android:background="@drawable/bottom_bar_rectangle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <LinearLayout
+            android:id="@+id/btnHome"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+            <View
+                android:id="@+id/home_indicator"
+                android:layout_width="50dp"
+                android:layout_height="@dimen/_6sdp"
+                android:background="@drawable/bottom_top_indicator_rectangle" />
+            <ImageView
+                android:id="@+id/home_icon"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_9sdp"
+                android:src="@drawable/baseline_dashboard_24" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/btnDownload"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+            <View
+                android:id="@+id/download_indicator"
+                android:layout_width="50dp"
+                android:layout_height="@dimen/_6sdp"
+                android:background="@drawable/bottom_top_indicator_rectangle" />
+            <ImageView
+                android:id="@+id/download_icon"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_9sdp"
+                android:src="@drawable/baseline_file_download_24" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/btnProfile"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+            <View
+                android:id="@+id/profile_indicator"
+                android:layout_width="50dp"
+                android:layout_height="@dimen/_6sdp"
+                android:background="@drawable/bottom_top_indicator_rectangle" />
+            <ImageView
+                android:id="@+id/profile_icon"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_9sdp"
+                android:src="@drawable/baseline_person_24" />
+        </LinearLayout>
+    </LinearLayout>
+    <!--<com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="0dp"
         android:layout_height="@dimen/_50sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:menu="@menu/bottom_menu"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.example.dazzlingdecor.screens.wallpapercategory
+package com.example.dazzlingdecor.screens.wallpapersearched
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
@@ -7,7 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.dazzlingdecor.adapter.RecyclerViewCategoriesWallpaper
+import com.example.dazzlingdecor.adapter.RecyclerViewSearchedWallpaperAdapter
 import com.example.dazzlingdecor.apihelper.ApiHelper
 import com.example.dazzlingdecor.databinding.ActivityWallpaperCategoryBinding
 import com.example.dazzlingdecor.model.DataModel
@@ -16,7 +16,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class WallpaperCategoryActivity : AppCompatActivity() {
+class WallpaperSearchedActivity : AppCompatActivity() {
     lateinit var binding:ActivityWallpaperCategoryBinding
     @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +31,7 @@ class WallpaperCategoryActivity : AppCompatActivity() {
         binding.shimmer.startShimmer()
 val searchValue=intent.getStringExtra("search")
 val color=intent.getStringExtra("colorCode")
-        Toast.makeText(this@WallpaperCategoryActivity, "$color", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this@WallpaperSearchedActivity, "$color", Toast.LENGTH_SHORT).show()
    val apiHelper=ApiHelper.create()
 
         apiHelper.getColorSearchImages(searchValue!!,"$color").enqueue(object :Callback<DataModel>{
@@ -46,8 +46,8 @@ val color=intent.getStringExtra("colorCode")
                 val noOfWallpaper=response.body()!!.per_page.toString()
                 binding.txtWallpaperCategory.text=searchValue
                 binding.txtWallpaperCount.text= "$noOfWallpaper wallpaper available"
-             binding.recViewPerCategories.layoutManager= GridLayoutManager(this@WallpaperCategoryActivity,2)
-                binding.recViewPerCategories.adapter=RecyclerViewCategoriesWallpaper(this@WallpaperCategoryActivity,response.body()!!.photos)
+             binding.recViewPerCategories.layoutManager= GridLayoutManager(this@WallpaperSearchedActivity,2)
+                binding.recViewPerCategories.adapter=RecyclerViewSearchedWallpaperAdapter(this@WallpaperSearchedActivity,response.body()!!.photos)
 
                 }
                 }

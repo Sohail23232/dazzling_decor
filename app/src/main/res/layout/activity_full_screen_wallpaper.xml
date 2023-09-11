@@ -4,9 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/nature"
     tools:context=".screens.FullScreenWallpaperActivity">
-
+<ImageView
+    android:id="@+id/mainImage"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:src="@drawable/ic_launcher_background"
+    android:scaleType="fitXY"/>
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="@dimen/_50sdp"

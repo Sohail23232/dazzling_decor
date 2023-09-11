@@ -23,13 +23,13 @@
             android:layout_marginTop="@dimen/_30sdp"
             android:paddingStart="@dimen/_8sdp"
             android:paddingEnd="@dimen/_8sdp"
-
             android:background="@drawable/rectangle_round_edt"
             >
             <EditText
                 android:id="@+id/edtSearchWallpaper"
                 android:layout_width="0dp"
                 android:ems="12"
+                android:inputType="text"
                 android:layout_weight="9"
                 android:backgroundTint="#00FFFFFF"
                 android:textColorHint="#888484"
@@ -57,21 +57,14 @@
             android:textStyle="bold"
             android:layout_marginStart="@dimen/_18sdp"/>
 
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:layout_width="match_parent"
-            android:id="@+id/shimmer"
-            android:layout_marginStart="@dimen/_15sdp"
-            android:layout_height="@dimen/_200sdp">
-            <include layout="@layout/row_shimmer"/>
 
-        </com.facebook.shimmer.ShimmerFrameLayout>
+
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recViewCurated"
+            android:id="@+id/recViewBestOfMonth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:visibility="gone"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginStart="@dimen/_18sdp"/>
         <TextView

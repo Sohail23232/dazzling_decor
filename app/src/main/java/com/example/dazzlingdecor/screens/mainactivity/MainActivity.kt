@@ -1,30 +1,17 @@
 package com.example.dazzlingdecor.screens.mainactivity
 
-import android.content.Context
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.MenuItem
-import android.widget.Toast
+import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.dazzlingdecor.R
-import com.example.dazzlingdecor.adapter.RecyclerViewCategoriesWallpaper
-import com.example.dazzlingdecor.apihelper.ApiHelper
 import com.example.dazzlingdecor.databinding.ActivityMainBinding
 import com.example.dazzlingdecor.fragment.DownloadFragment
 import com.example.dazzlingdecor.fragment.ProfileFragment
 import com.example.dazzlingdecor.fragment.mainfragment.MainFragment
 import com.example.dazzlingdecor.model.ColorModel
-import com.example.dazzlingdecor.model.DataModel
-import com.example.dazzlingdecor.model.PhotosModel
-import com.google.android.material.navigation.NavigationBarView
-import com.google.android.material.navigation.NavigationView
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -52,27 +39,38 @@ class MainActivity : AppCompatActivity() {
         binding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         fm=supportFragmentManager
-        binding.bottomNavBar.setOnItemSelectedListener(object :NavigationBarView.OnItemSelectedListener{
-            override fun onNavigationItemSelected(item: MenuItem): Boolean {
-                if (item.itemId==R.id.menu_dashboard){
-                    loadFrag(MainFragment())
-           /*  val mainFrag=MainFragment()
-                    val bundle=Bundle()
-                    bundle.putInt("pos",coloIdVar)
-                    mainFrag.arguments=bundle
-                    loadFrag(mainFrag)*/
-                }
-                else if (item.itemId==R.id.menu_download){
-                    loadFrag(DownloadFragment())
-                }
-                else if (item.itemId==R.id.menu_profile){
-                    loadFrag(ProfileFragment())
-                }
-                return true
-            }
-
-        })
-        binding.bottomNavBar.selectedItemId=R.id.menu_dashboard
+       loadFrag(MainFragment())
+        binding.downloadIndicator.visibility= View.INVISIBLE
+        binding.profileIndicator.visibility= View.INVISIBLE
+        binding.homeIcon.drawable.setTint(Color.RED)
+        binding.downloadIcon.drawable.setTint(Color.BLACK)
+        binding.profileIcon.drawable.setTint(Color.BLACK)
+        binding.btnDownload.setOnClickListener {
+            binding.homeIndicator.visibility= View.INVISIBLE
+            binding.profileIndicator.visibility= View.INVISIBLE
+            binding.homeIcon.drawable.setTint(Color.BLACK)
+            binding.downloadIndicator.visibility=View.VISIBLE
+            binding.downloadIcon.drawable.setTint(Color.RED)
+            loadFrag(DownloadFragment())
+        }
+        binding.btnHome.setOnClickListener {
+            loadFrag(MainFragment())
+            binding.downloadIndicator.visibility= View.INVISIBLE
+            binding.profileIndicator.visibility= View.INVISIBLE
+            binding.homeIndicator.visibility=View.VISIBLE
+            binding.downloadIcon.drawable.setTint(Color.BLACK)
+            binding.profileIcon.drawable.setTint(Color.BLACK)
+            binding.homeIcon.drawable.setTint(Color.RED)
+        }
+        binding.btnProfile.setOnClickListener {
+            loadFrag(ProfileFragment())
+            binding.downloadIndicator.visibility= View.INVISIBLE
+            binding.homeIndicator.visibility= View.INVISIBLE
+            binding.profileIndicator.visibility=View.VISIBLE
+            binding.homeIcon.drawable.setTint(Color.BLACK)
+            binding.downloadIcon.drawable.setTint(Color.BLACK)
+            binding.profileIcon.drawable.setTint(Color.RED)
+        }
 
     }
     fun loadFrag(fragment: Fragment){
