@@ -39,49 +39,73 @@ class MainActivity : AppCompatActivity() {
         binding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         fm=supportFragmentManager
-       loadFrag(MainFragment())
+       loadFrag(MainFragment(),true)
         binding.downloadIndicator.visibility= View.INVISIBLE
         binding.profileIndicator.visibility= View.INVISIBLE
-        binding.homeIcon.drawable.setTint(Color.RED)
-        binding.downloadIcon.drawable.setTint(Color.BLACK)
-        binding.profileIcon.drawable.setTint(Color.BLACK)
+        binding.homeIcon.drawable.setTint(Color.BLACK)
+        binding.downloadIcon.drawable.setTint(Color.GRAY)
+        binding.profileIcon.drawable.setTint(Color.GRAY)
         binding.btnDownload.setOnClickListener {
             binding.homeIndicator.visibility= View.INVISIBLE
             binding.profileIndicator.visibility= View.INVISIBLE
-            binding.homeIcon.drawable.setTint(Color.BLACK)
+            binding.homeIcon.drawable.setTint(Color.GRAY)
+            binding.profileIcon.drawable.setTint(Color.GRAY)
             binding.downloadIndicator.visibility=View.VISIBLE
-            binding.downloadIcon.drawable.setTint(Color.RED)
-            loadFrag(DownloadFragment())
+            binding.downloadIcon.drawable.setTint(Color.BLACK)
+            loadFrag(DownloadFragment(),false)
         }
         binding.btnHome.setOnClickListener {
-            loadFrag(MainFragment())
+            loadFrag(MainFragment(),true)
             binding.downloadIndicator.visibility= View.INVISIBLE
             binding.profileIndicator.visibility= View.INVISIBLE
             binding.homeIndicator.visibility=View.VISIBLE
-            binding.downloadIcon.drawable.setTint(Color.BLACK)
-            binding.profileIcon.drawable.setTint(Color.BLACK)
-            binding.homeIcon.drawable.setTint(Color.RED)
+            binding.downloadIcon.drawable.setTint(Color.GRAY)
+            binding.profileIcon.drawable.setTint(Color.GRAY)
+            binding.homeIcon.drawable.setTint(Color.BLACK)
         }
         binding.btnProfile.setOnClickListener {
-            loadFrag(ProfileFragment())
+            loadFrag(ProfileFragment(),false)
             binding.downloadIndicator.visibility= View.INVISIBLE
             binding.homeIndicator.visibility= View.INVISIBLE
             binding.profileIndicator.visibility=View.VISIBLE
-            binding.homeIcon.drawable.setTint(Color.BLACK)
-            binding.downloadIcon.drawable.setTint(Color.BLACK)
-            binding.profileIcon.drawable.setTint(Color.RED)
+            binding.homeIcon.drawable.setTint(Color.GRAY)
+            binding.downloadIcon.drawable.setTint(Color.GRAY)
+            binding.profileIcon.drawable.setTint(Color.BLACK)
         }
 
     }
-    fun loadFrag(fragment: Fragment){
+    fun loadFrag(fragment: Fragment,isHome:Boolean){
         val ft=fm.beginTransaction()
         if (check){
             ft.add(R.id.container,fragment)
+            ft.addToBackStack("home")
         }
-        else{
-            ft.replace(R.id.container,fragment)
+        else {
+            ft.replace(R.id.container, fragment)
+            if (isHome) {
+                fm.popBackStack("home", FragmentManager.POP_BACK_STACK_INCLUSIVE)
+                ft.addToBackStack("home")
+            } else {
+
+                ft.addToBackStack(null)
+            }
         }
         ft.commit()
+    }
+
+    override fun onBackPressed() {
+        if (fm.backStackEntryCount==1){
+          finish()
+        }
+        else{
+            loadFrag(MainFragment(),true)
+            binding.homeIndicator.visibility=View.VISIBLE
+            binding.downloadIndicator.visibility= View.INVISIBLE
+            binding.profileIndicator.visibility= View.INVISIBLE
+            binding.homeIcon.drawable.setTint(Color.BLACK)
+            binding.downloadIcon.drawable.setTint(Color.GRAY)
+            binding.profileIcon.drawable.setTint(Color.GRAY)
+        }
     }
 
 }

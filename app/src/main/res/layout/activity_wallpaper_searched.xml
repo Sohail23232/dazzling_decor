@@ -55,7 +55,7 @@
             android:layout_width="match_parent"
             android:id="@+id/shimmer"
             android:layout_height="match_parent">
-      <include layout="@layout/row_cat_shimmer"/>
+      <include layout="@layout/row_searched_shimmer"/>
         </com.facebook.shimmer.ShimmerFrameLayout>
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
