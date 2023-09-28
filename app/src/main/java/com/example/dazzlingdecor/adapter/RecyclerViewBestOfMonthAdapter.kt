@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.dazzlingdecor.ItemCliickListner
 import com.example.dazzlingdecor.databinding.RowBestMonthRecViewBinding
-import com.example.dazzlingdecor.databinding.RowWallpaperCategoryRecViewBinding
 import com.example.dazzlingdecor.model.PhotosModel
 import com.example.dazzlingdecor.screens.FullScreenWallpaperActivity
 

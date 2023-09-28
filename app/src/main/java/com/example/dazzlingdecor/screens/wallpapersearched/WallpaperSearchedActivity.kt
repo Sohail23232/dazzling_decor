@@ -9,7 +9,9 @@ import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.dazzlingdecor.adapter.RecyclerViewSearchedWallpaperAdapter
 import com.example.dazzlingdecor.apihelper.ApiHelper
-import com.example.dazzlingdecor.databinding.ActivityWallpaperCategoryBinding
+import com.example.dazzlingdecor.databinding.ActivityWallpaperSearchedBinding
+
+
 import com.example.dazzlingdecor.model.DataModel
 import com.facebook.shimmer.Shimmer
 import retrofit2.Call
@@ -17,11 +19,11 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class WallpaperSearchedActivity : AppCompatActivity() {
-    lateinit var binding:ActivityWallpaperCategoryBinding
+    lateinit var binding: ActivityWallpaperSearchedBinding
     @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding=ActivityWallpaperCategoryBinding.inflate(layoutInflater)
+        binding= ActivityWallpaperSearchedBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val shimmer=Shimmer.AlphaHighlightBuilder()
             .setDirection(Shimmer.Direction.LEFT_TO_RIGHT)
@@ -31,7 +33,7 @@ class WallpaperSearchedActivity : AppCompatActivity() {
         binding.shimmer.startShimmer()
 val searchValue=intent.getStringExtra("search")
 val color=intent.getStringExtra("colorCode")
-        Toast.makeText(this@WallpaperSearchedActivity, "$color", Toast.LENGTH_SHORT).show()
+
    val apiHelper=ApiHelper.create()
 
         apiHelper.getColorSearchImages(searchValue!!,"$color").enqueue(object :Callback<DataModel>{

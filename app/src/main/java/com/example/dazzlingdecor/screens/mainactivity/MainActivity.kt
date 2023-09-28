@@ -11,6 +11,7 @@ import com.example.dazzlingdecor.databinding.ActivityMainBinding
 import com.example.dazzlingdecor.fragment.DownloadFragment
 import com.example.dazzlingdecor.fragment.ProfileFragment
 import com.example.dazzlingdecor.fragment.mainfragment.MainFragment
+import com.example.dazzlingdecor.model.CatWallModel
 import com.example.dazzlingdecor.model.ColorModel
 
 class MainActivity : AppCompatActivity() {
@@ -19,19 +20,20 @@ class MainActivity : AppCompatActivity() {
     val check=false
 
     companion object{
+
         val colorList=ArrayList<ColorModel>().apply {
             add(ColorModel(1,R.color.black,"#FF000000"))
-            add(ColorModel(1,R.color.white,"#FFFFFFFF"))
-            add(ColorModel(1,R.color.grey,"#FF888484"))
-            add(ColorModel(1,R.color.yellow,"#F9A825"))
-            add(ColorModel(1,R.color.orange,"#EF6C00"))
-            add(ColorModel(1,R.color.red,"#FD0202"))
-            add(ColorModel(1,R.color.blue,"#07A2F6"))
-            add(ColorModel(1,R.color.green,"#06EF10"))
-            add(ColorModel(1,R.color.turquoise,"#03C8B1"))
-            add(ColorModel(1,R.color.violet,"#4D09F1"))
-            add(ColorModel(1,R.color.pink,"#F60A67"))
-            add(ColorModel(1,R.color.peach,"#E39F5B"))
+            add(ColorModel(2,R.color.white,"#FFFFFFFF"))
+            add(ColorModel(3,R.color.grey,"#FF888484"))
+            add(ColorModel(4,R.color.yellow,"#F9A825"))
+            add(ColorModel(5,R.color.orange,"#EF6C00"))
+            add(ColorModel(6,R.color.red,"#FD0202"))
+            add(ColorModel(7,R.color.blue,"#07A2F6"))
+            add(ColorModel(8,R.color.green,"#06EF10"))
+            add(ColorModel(9,R.color.turquoise,"#03C8B1"))
+            add(ColorModel(10,R.color.violet,"#4D09F1"))
+            add(ColorModel(11,R.color.pink,"#F60A67"))
+            add(ColorModel(12,R.color.peach,"#E39F5B"))
         }
     }
     override fun onCreate(savedInstanceState: Bundle?) {

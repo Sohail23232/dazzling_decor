@@ -1,8 +1,9 @@
 package com.example.dazzlingdecor
 
+import android.view.View
 import android.widget.AdapterView.OnItemClickListener
 import java.text.FieldPosition
 
 interface ItemCliickListner {
-    fun OnItemClickListener(position: Int)
+    fun OnItemClickListeners(position: Int)
 }
