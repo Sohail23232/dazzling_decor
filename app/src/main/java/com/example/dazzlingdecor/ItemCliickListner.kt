@@ -6,6 +6,6 @@ import java.text.FieldPosition
 
 interface
 ItemCliickListner {
-    //interace for click listner
+    //interace for click listners
     fun OnItemClickListeners(position: Int)
 }
