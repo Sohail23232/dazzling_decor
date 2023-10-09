@@ -33,7 +33,7 @@ class MainFragment : Fragment(), ItemCliickListner {
         binding.recViewColor.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         binding.recViewColor.adapter = RecyclerViewColorPalleteAdapter(this, this.requireContext(), MainActivity.colorList)
       viewModel.getCuratedImages(binding.recViewBestOfMonth,this.requireContext(),binding.mainShimmer)
-
+//
         viewModel.getCategoriesImagesRec(binding.recViewCategories,this.requireContext())
 
         binding.btnSearchWallpaper.setOnClickListener {
