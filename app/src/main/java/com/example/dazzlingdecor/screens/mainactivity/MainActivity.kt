@@ -20,7 +20,18 @@ class MainActivity : AppCompatActivity() {
     val check=false
 
     companion object{
-
+        val catNameList=ArrayList<CatWallModel>().apply {
+            add(CatWallModel(1,"Abstract", R.drawable.abstracts))
+            add(CatWallModel(2,"Anime", R.drawable.anime))
+            add(CatWallModel(3,"Art", R.drawable.art))
+            add(CatWallModel(4,"Amoled", R.drawable.amoled))
+            add(CatWallModel(5,"Portrait", R.drawable.portrait))
+            add(CatWallModel(6,"Space", R.drawable.space))
+            add(CatWallModel(7,"Gradients", R.drawable.gradient))
+            add(CatWallModel(8,"Illustration", R.drawable.illus))
+            add(CatWallModel(9,"Cyber", R.drawable.cyber))
+            add(CatWallModel(10,"Nature", R.drawable.nature))
+        }
         val colorList=ArrayList<ColorModel>().apply {
             add(ColorModel(1,R.color.black,"#FF000000"))
             add(ColorModel(2,R.color.white,"#FFFFFFFF"))
