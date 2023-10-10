@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
             add(CatWallModel(9,"Cyber", R.drawable.cyber))
             add(CatWallModel(10,"Nature", R.drawable.nature))
         }
+        //
         val colorList=ArrayList<ColorModel>().apply {
             add(ColorModel(1,R.color.black,"#FF000000"))
             add(ColorModel(2,R.color.white,"#FFFFFFFF"))
